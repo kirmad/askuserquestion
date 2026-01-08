@@ -107,11 +107,16 @@ jobs:
         with:
           path: artifacts
 
-      - name: Copy binaries to packages
+      - name: Copy binaries to packages and set permissions
         run: |
           for pkg in askuserquestion-darwin-arm64 askuserquestion-darwin-x64 askuserquestion-linux-x64 askuserquestion-linux-arm64 askuserquestion-win32-x64; do
             cp -r artifacts/$pkg/* npm-packages/$pkg/
           done
+          # Make Unix binaries executable before npm pack (permissions preserved in tarball)
+          chmod +x npm-packages/askuserquestion-darwin-arm64/askuserquestion
+          chmod +x npm-packages/askuserquestion-darwin-x64/askuserquestion
+          chmod +x npm-packages/askuserquestion-linux-x64/askuserquestion
+          chmod +x npm-packages/askuserquestion-linux-arm64/askuserquestion
 
       - name: Set version from tag or input
         run: |
