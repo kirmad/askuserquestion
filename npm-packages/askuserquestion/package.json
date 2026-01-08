@@ -1,0 +1,45 @@
+{
+  "name": "@kirmad/askuserquestion",
+  "version": "0.1.0",
+  "description": "OpenCode plugin that provides a native GUI dialog for asking users questions",
+  "type": "module",
+  "main": "./.opencode/plugin/askuserquestion.ts",
+  "files": [
+    ".opencode/"
+  ],
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "opencode",
+    "plugin",
+    "dialog",
+    "gui",
+    "native",
+    "cross-platform"
+  ],
+  "author": "kirmad",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "peerDependencies": {
+    "@opencode-ai/plugin": ">=1.0.0"
+  },
+  "optionalDependencies": {
+    "@kirmad/askuserquestion-darwin-arm64": "0.1.0",
+    "@kirmad/askuserquestion-darwin-x64": "0.1.0",
+    "@kirmad/askuserquestion-linux-x64": "0.1.0",
+    "@kirmad/askuserquestion-linux-arm64": "0.1.0",
+    "@kirmad/askuserquestion-win32-x64": "0.1.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0",
+    "@types/node": "^22.0.0",
+    "@opencode-ai/plugin": "^1.1.6"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,0 +1,23 @@
+# Rust
+ask-user-app/target/
+**/*.rs.bk
+Cargo.lock
+
+# Node
+node_modules/
+*.log
+.npm
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Build artifacts (binaries are built in CI)
+npm-packages/*/askuserquestion
+npm-packages/*/askuserquestion.exe

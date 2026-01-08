@@ -1,0 +1,20 @@
+{
+  "name": "@kirmad/askuserquestion-darwin-arm64",
+  "version": "0.1.0",
+  "description": "Native binary for @kirmad/askuserquestion (macOS Apple Silicon)",
+  "os": ["darwin"],
+  "cpu": ["arm64"],
+  "main": "index.js",
+  "files": [
+    "askuserquestion",
+    "index.js"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
