@@ -89,6 +89,9 @@ jobs:
     name: Publish to npm
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write  # Required for OIDC trusted publishing
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -96,7 +99,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "22"  # Node 22+ has npm with OIDC support
           registry-url: "https://registry.npmjs.org"
 
       - name: Download all artifacts
@@ -142,22 +145,18 @@ jobs:
           "
 
       - name: Publish platform packages
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           cd npm-packages
 
           for pkg in askuserquestion-darwin-arm64 askuserquestion-darwin-x64 askuserquestion-linux-x64 askuserquestion-linux-arm64 askuserquestion-win32-x64; do
             cd $pkg
             echo "Publishing @kirmad/$pkg..."
-            npm publish --access public || true
+            npm publish --provenance --access public || true
             cd ..
           done
 
       - name: Publish main package
         working-directory: npm-packages/askuserquestion
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           echo "Publishing @kirmad/askuserquestion..."
-          npm publish --access public
+          npm publish --provenance --access public
